@@ -1,3 +1,3 @@
-module github.com/yuswift/devops-go-sample
+module devops-go-sample
 
 go 1.15

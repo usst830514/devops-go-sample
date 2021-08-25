@@ -2,10 +2,20 @@ package main
 
 import (
 	"fmt"
-	"time"
+	"log"
+	"net/http"
 )
 
+func HelloServer(w http.ResponseWriter, req *http.Request) {
+	if _, err := fmt.Fprintf(w, "Hello,"+req.URL.Path[1:]); err != nil {
+		fmt.Println("error")
+	}
+}
+
 func main() {
-	fmt.Println("devops-go-sample")
-	time.Sleep(time.Duration(60*60*24) * time.Second)
+	http.HandleFunc("/", HelloServer)
+	err := http.ListenAndServe("localhost:80", nil)
+	if err != nil {
+		log.Fatal("ListenAndServe: ", err.Error())
+	}
 }
