@@ -18,3 +18,5 @@ WORKDIR /devops
 COPY --from=builder /devops/devops-go-sample .
 
 ENTRYPOINT ["./devops-go-sample"]
+
+EXPOSE 80/tcp
