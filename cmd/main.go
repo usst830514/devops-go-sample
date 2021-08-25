@@ -14,7 +14,7 @@ func HelloServer(w http.ResponseWriter, req *http.Request) {
 
 func main() {
 	http.HandleFunc("/", HelloServer)
-	err := http.ListenAndServe("localhost:80", nil)
+	err := http.ListenAndServe(":80", nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err.Error())
 	}
